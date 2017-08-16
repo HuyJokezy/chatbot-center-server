@@ -15,7 +15,7 @@ let persistentMenu = {
     text: 'Cảm ơn bạn đã quan tâm'
   }
 };
-exports.persistentMenu = ;
+exports.persistentMenu;
 exports.PAGE_ACCESS_TOKEN;
 
 // Modules
