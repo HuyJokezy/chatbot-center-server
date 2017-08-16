@@ -25,11 +25,14 @@ const app = express();
 const path = require("path");
 const fbmsgConfigure = require('./fbmsg/configure');
 const fbmsgHandler = require('./fbmsg/handler');
+var ejs = require('ejs');
+var fs = require('fs');
 
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+app.set('view engine', 'ejs');
 
 // Facebook Messenger Webhook Setup
 app.get('/fbmsg', function (req, res) {
@@ -42,8 +45,8 @@ app.get('/fbmsg', function (req, res) {
 
 // Admin Page
 app.get('/', function (req,res) {
-  // res.render('./index.html');
-  res.sendFile(path.join(__dirname + '/index.html'));
+  res.render('./index.html');
+  // res.sendFile(path.join(__dirname + '/index.html'));
   // document.getElementById(showProductButtonTitle).value = persistentMenu.products.title;
   // document.getElementById(websiteButtonTitle).value = persistentMenu.website.title;
   // document.getElementById(websiteButtonUrl).value = persistentMenu.website.url;
