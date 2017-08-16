@@ -1,6 +1,7 @@
 const request = require('request');
 const makeMessage = require('makeMessage');
-import {PAGE_ACCESS_TOKEN, persistentMenu} from '../index.js'
+let persistentMenu = require('../index').persistentMenu;
+let PAGE_ACCESS_TOKEN = require('../index').PAGE_ACCESS_TOKEN;
 
 exports.processInputMessage = function (messaging) {
 	const userId = messaging.sender.id;
