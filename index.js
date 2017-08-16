@@ -15,7 +15,7 @@ let persistentMenu = {
     text: 'Cảm ơn bạn đã quan tâm'
   }
 };
-exports.persistentMenu;
+exports.persistentMenu = ;
 exports.PAGE_ACCESS_TOKEN;
 
 // Modules
@@ -23,8 +23,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const path = require("path");
-const fbmsgConfigure = require('fbmsg/configure');
-const fbmsgHandler = require('fbmsg/handler');
+const fbmsgConfigure = require('./fbmsg/configure');
+const fbmsgHandler = require('./fbmsg/handler');
 
 app.use(bodyParser.urlencoded({
     extended: true
