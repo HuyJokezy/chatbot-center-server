@@ -1,5 +1,5 @@
 const request = require('request');
-const makeMessage = require('makeMessage');
+const makeMessage = require('./makeMessage');
 let persistentMenu = require('../index').persistentMenu;
 let PAGE_ACCESS_TOKEN = require('../index').PAGE_ACCESS_TOKEN;
 
