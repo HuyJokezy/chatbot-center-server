@@ -42,12 +42,13 @@ app.get('/fbmsg', function (req, res) {
 
 // Admin Page
 app.get('/', function (req,res) {
-  res.sendFile(path.join(__dirname + '/index.html'));
-  document.getElementById(showProductButtonTitle).value = persistentMenu.products.title;
-  document.getElementById(websiteButtonTitle).value = persistentMenu.website.title;
-  document.getElementById(websiteButtonUrl).value = persistentMenu.website.url;
-  document.getElementById(customButtonTitle).value = persistentMenu.custom.title;
-  document.getElementById(customButtonText).value = persistentMenu.custom.text;
+  res.render('./index.html');
+  // res.sendFile(path.join(__dirname + '/index.html'));
+  // document.getElementById(showProductButtonTitle).value = persistentMenu.products.title;
+  // document.getElementById(websiteButtonTitle).value = persistentMenu.website.title;
+  // document.getElementById(websiteButtonUrl).value = persistentMenu.website.url;
+  // document.getElementById(customButtonTitle).value = persistentMenu.custom.title;
+  // document.getElementById(customButtonText).value = persistentMenu.custom.text;
   //__dirname : It will resolve to your project folder.
 });
   
@@ -61,14 +62,14 @@ app.post('/fbmsg', function (req, res) {
   res.status(200).json({});
 });
 
-function changeConfig () {
-  let greeting = ocument.getElementById(greeting).value;
-  let showProductButtonTitle = document.getElementById(showProductButtonTitle).value;
-  let websiteButtonTitle = document.getElementById(websiteButtonTitle).value;
-  let websiteButtonUrl = document.getElementById(websiteButtonUrl).value;
-  let customButtonTitle = document.getElementById(customButtonTitle).value;
-  let customButtonText = document.getElementById(customButtonText).value;
-  persistentMenu.custom.text = customButtonText;
+exports.changeConfig = function (greeting, showProductButtonTitle, websiteButtonTitle, websiteButtonUrl, customButtonTitle, customButtonText) {
+  // let greeting = document.getElementById(greeting).value;
+  // let showProductButtonTitle = document.getElementById(showProductButtonTitle).value;
+  // let websiteButtonTitle = document.getElementById(websiteButtonTitle).value;
+  // let websiteButtonUrl = document.getElementById(websiteButtonUrl).value;
+  // let customButtonTitle = document.getElementById(customButtonTitle).value;
+  // let customButtonText = document.getElementById(customButtonText).value;
+  // persistentMenu.custom.text = customButtonText;
   fbmsgConfigure.greetingText(PAGE_ACCESS_TOKEN, greeting);
   fbmsgConfigure.persistentMenu(PAGE_ACCESS_TOKEN, showProductButtonTitle, websiteButtonTitle, websiteButtonUrl, customButtonTitle);
 }
