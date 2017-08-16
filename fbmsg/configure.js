@@ -18,13 +18,13 @@ exports.getStartedButton = function	(PAGE_ACCESS_TOKEN, payload) {
 				"payload": payload
 			}
 		}
-	}
+	};
 	request(options, function (error, response, body) {
 		if (error) {
 			console.log('Error: Cannot set Get Started button');
 			console.log(error);
 		} else {
-			console.log('Success: Set Get Started button')
+			console.log('Success: Set Get Started button');
 		}
 	});
 }
@@ -53,7 +53,7 @@ exports.greetingText = function (PAGE_ACCESS_TOKEN, greeting) {
 		body: {
 			"greeting": greeting
 		}
-	}
+	};
 	request(options, function (error, response, body) {
 		if (error) {
 			console.log('Error: Cannot set Greeting Text');
@@ -61,14 +61,51 @@ exports.greetingText = function (PAGE_ACCESS_TOKEN, greeting) {
 		} else {
 			console.log('Success: Set Greeting Text');
 		}
-	})
+	});
 }
 
 /**
  * 
  */
-exports.persistentMenu = function () {
-
+exports.persistentMenu = function (PAGE_ACCESS_TOKEN, showProductButtonTitle, websiteButtonTitle, websiteButtonUrl, customButtonTitle) {
+	let options = {
+		method: 'POST',
+		uri: "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=" + PAGE_ACCESS_TOKEN,
+		json: true,
+		body: {
+			"persistent_menu": [
+				{
+					"locale": "default",
+					"composer_input_disabled": false,
+					"call_to_actions": [
+						{
+							"title": showProductButtonTitle,
+							"type": "postback",
+							"payload": "SHOW_PRODUCT"
+						},
+						{
+							"title": websiteButtonTitle,
+							"type": "web_url",
+							"url": websiteButtonUrl
+						},
+						{
+							"title": customButtonTitle,
+							"type": "postback",
+							"payload": "CUSTOM_TEXT"
+						}
+					]
+				}
+			]
+		}
+	};
+	request(options, function (error, response, body) {
+		if (error) {
+			console.log('Error: Cannot set Persistent Menu');
+			console.log(error);
+		} else {
+			console.log('Success: Set Persistent Menu');
+		}
+	});
 }
 
 /**
@@ -86,7 +123,7 @@ exports.domainWhitelisting = function (PAGE_ACCESS_TOKEN, whitelisted_domains) {
 		body: {
 			"whitelisted_domains": whitelisted_domains
 		}
-	}
+	};
 	request(options, function (error, response, body) {
 		if (error) {
 			console.log('Error: Cannot set Domain Whitelist');
@@ -94,6 +131,6 @@ exports.domainWhitelisting = function (PAGE_ACCESS_TOKEN, whitelisted_domains) {
 		} else {
 			console.log('Success: Set Domain Whitelist');
 		}
-	})
+	});
 }
 

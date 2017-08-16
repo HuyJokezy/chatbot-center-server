@@ -1,16 +1,18 @@
 'use strict';
 
 // Variable for testing
-const PAGE_ACCESS_TOKEN = 'EAAB3JUNaWzgBAJirLACJvpCwrGBgtQbLyKjfHxbRGGYeut2eG09N6OpOrYRjnyEyZB8j1qx0KUX6rkghZAZBvWKky6yV1wVzzV8tqpNwW5yyNZAt7OlSVtZCXtU6OnL5qZA6xBCmOrZAPxU6qlLRINhn8DWZB4OEZCxQgf4RGFxaKihZB01unAqbbZB';
-var persistentMenu = {
+exports const PAGE_ACCESS_TOKEN = 'EAAB3JUNaWzgBAJirLACJvpCwrGBgtQbLyKjfHxbRGGYeut2eG09N6OpOrYRjnyEyZB8j1qx0KUX6rkghZAZBvWKky6yV1wVzzV8tqpNwW5yyNZAt7OlSVtZCXtU6OnL5qZA6xBCmOrZAPxU6qlLRINhn8DWZB4OEZCxQgf4RGFxaKihZB01unAqbbZB';
+exports var persistentMenu = {
   products: {
-
+    title: 'Xem sản phẩm'
   },
-  homepage: {
-
+  website: {
+    title: 'Trang web',
+    url: 'https://www.google.com.vn'
   },
-  cart: {
-
+  custom: {
+    title: 'Tìm hiểu thêm',
+    text: 'Cảm ơn bạn đã quan tâm'
   }
 };
 
@@ -19,7 +21,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const path = require("path");
-// const fbmsg = require('fbmsg');
+const fbmsgConfigure = require('fbmsg/configure');
+const fbmsgHandler = require('fbmsg/handler');
+
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -37,6 +41,11 @@ app.get('/fbmsg', function (req, res) {
 // Admin Page
 app.get('/', function (req,res) {
   res.sendFile(path.join(__dirname + '/index.html'));
+  document.getElementById(showProductButtonTitle).value = persistentMenu.products.title;
+  document.getElementById(websiteButtonTitle).value = persistentMenu.website.title;
+  document.getElementById(websiteButtonUrl).value = persistentMenu.website.url;
+  document.getElementById(customButtonTitle).value = persistentMenu.custom.title;
+  document.getElementById(customButtonText).value = persistentMenu.custom.text;
   //__dirname : It will resolve to your project folder.
 });
   
@@ -44,14 +53,23 @@ app.get('/', function (req,res) {
 app.post('/fbmsg', function (req, res) {
   for (let i = 0; i < entry.length; i++) {
     for (let j = 0; j < entry[i].messaging.length; j++) {
-      fbmsg.handler.processInputMessage(entry[i].messaging[j]);
+      fbmsgHandler.processInputMessage(entry[i].messaging[j]);
     }
   }
   res.status(200).json({});
 });
 
-
-
+function changeConfig () {
+  let greeting = ocument.getElementById(greeting).value;
+  let showProductButtonTitle = document.getElementById(showProductButtonTitle).value;
+  let websiteButtonTitle = document.getElementById(websiteButtonTitle).value;
+  let websiteButtonUrl = document.getElementById(websiteButtonUrl).value;
+  let customButtonTitle = document.getElementById(customButtonTitle).value;
+  let customButtonText = document.getElementById(customButtonText).value;
+  persistentMenu.custom.text = customButtonText;
+  fbmsgConfigure.greetingText(PAGE_ACCESS_TOKEN, greeting);
+  fbmsgConfigure.persistentMenu(PAGE_ACCESS_TOKEN, showProductButtonTitle, websiteButtonTitle, websiteButtonUrl, customButtonTitle);
+}
 // restService.post('/bizweb/orders/fulfilled', function (req, res) {
 //     var request = require('request');
 //     var constant = require('./lib/constant');

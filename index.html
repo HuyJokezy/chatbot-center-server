@@ -4,21 +4,36 @@
 	<title>Admin Page</title>
 </head>
 <body>
+<h3>Lời chào</h3>
+<p>Đây là tin nhắn khách hàng nhận được khi chọn Get Started</p>
+<input type="text" name="" id="greeting">
 <h3>Messenger Menu</h3>
 <p>Đây là menu hiển thị ở bên trái ô chat</p>
 <ul>
 	<li>
-		<p>Xem sản phẩm</p>
-		<input type="text" name=""><input type="submit" name="">
+		<h4>Xem sản phẩm</h4>
+		<p>Hiển thị sản phẩm của cửa hàng</p>
+		<p>Tên nút bấm</p>
+		<input type="text" name="" id="showProductButtonTitle">
 	</li>
 	<li>
-		<p>Trang chủ</p>
-		<input type="text" name=""><input type="submit" name="">
+		<h4>Trang Web</h4>
+		<p>Tên nút bấm</p>
+		<input type="text" name="" id="websiteButtonTitle">
+		<p>Địa chỉ website</p>
+		<input type="text" name="" id="websiteButtonUrl">
 	</li>
 	<li>
-		<p>Giỏ hàng</p>
-		<input type="text" name=""><input type="submit" name="">
+		<h4>Tùy chọn</h4>
+		<p>Tên nút bấm</p>
+		<input type="text" name="" id="customButtonTitle">
+		<p>Tin nhắn cho khách hàng</p>
+		<input type="text" name="" id="customButtonText">
 	</li>
 </ul>
+<button onmouseup="changeConfig()" onclick="setTimeout(function () {
+		window.location.reload();
+	}, 3000)">Lưu thay đổi</button>
 </body>
+<script type="text/javascript" src="index.js"></script>
 </html>

@@ -1,3 +1,7 @@
+const request = require('request');
+const makeMessage = require('makeMessage');
+import {PAGE_ACCESS_TOKEN, persistentMenu} from '../index.js'
+
 exports.processInputMessage = function (messaging) {
 	const userId = messaging.sender.id;
 	const pageId = messaging.recipient.id;
@@ -17,6 +21,15 @@ exports.processInputMessage = function (messaging) {
 	} else if (messaging.postback) {
 		// Postback Webhook
 		let payload = messaging.postback.payload
+		switch (payload) {
+			case 'CUSTOM_TEXT':
+				sendMessage(makeMessage.makeTextMessage(userId, persistentMenu.custom.text));
+				break;
+			case 'SHOW_PRODUCT':
+				sendMessage(makeMessage.makeTextMessage(userId, 'Some Products Here'));
+				break;
+			default:
+		}
 	} else if (messaging.referral) {
 		// Referral Webhook
 		let ref = messaging.referral.ref
@@ -26,3 +39,19 @@ exports.processInputMessage = function (messaging) {
 	}
 }
 
+function sendMessage (message) {
+	let options = {
+		method: 'POST',
+		uri: "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=" + PAGE_ACCESS_TOKEN,
+		json: true,
+		body: message
+	};
+	request(options, function (error, response, body) {
+		if (error) {
+			console.log('Error: Cannot send message');
+			console.log(error);
+		} else {
+			console.log('Success: Sent a message');
+		}
+	});
+}
