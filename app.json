@@ -1,0 +1,11 @@
+{
+  "name": "API.AI Chatbot server",
+  "description": "API.AI Chatbot server",
+  "repository": "https://github.com/HuyJokezy/chatbot-center-server",
+<<<<<<< HEAD
+  "logo": "",
+=======
+  "logo": "https://avatars1.githubusercontent.com/u/29818418?v=3&s=460",
+>>>>>>> 34e2da7c6e4056002df2a17a927a3107b5fc71d0
+  "keywords": ["api.ai", "natural language"]
+}
