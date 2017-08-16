@@ -40,7 +40,7 @@ app.get('/', function (req,res) {
   res.sendFile(path.join(__dirname + '/index.html'));
   //__dirname : It will resolve to your project folder.
 });
-
+  
 // Facebook Messenger Receiver
 app.post('/fbmsg', function (req, res) {
   for (let i = 0; i < entry.length; i++) {
