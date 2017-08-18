@@ -25,6 +25,7 @@ exports.processInputMessage = function (messaging) {
 		let payload = messaging.postback.payload
 		switch (payload) {
 			case 'GET_STARTED_PAYLOAD':
+				console.log(getStarted);
 				sendMessage(makeMessage.makeTextMessage(userId, getStarted));
 				break;
 			case 'CUSTOM_TEXT':
@@ -45,7 +46,7 @@ exports.processInputMessage = function (messaging) {
 }
 
 function sendMessage (message) {
-	console.log(message);
+	// console.log(message);
 	let options = {
 		method: 'POST',
 		uri: "https://graph.facebook.com/v2.6/me/messages?access_token=" + PAGE_ACCESS_TOKEN,
@@ -58,7 +59,7 @@ function sendMessage (message) {
 			console.log(error);
 		} else {
 			console.log('Success: Sent a message');
-			console.log(body);
+			// console.log(body);
 		}
 	});
 }
