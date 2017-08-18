@@ -25,6 +25,7 @@ exports.processInputMessage = function (messaging) {
 			case 'GET_STARTED_PAYLOAD':
 				// console.log(getStarted);
 				let getStarted = require('../index').getStarted;
+				console.log(getStarted);
 				sendMessage(makeMessage.makeTextMessage(userId, getStarted));
 				break;
 			case 'CUSTOM_TEXT':
