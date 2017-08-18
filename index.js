@@ -2,6 +2,7 @@
 
 // Variable for testing
 const PAGE_ACCESS_TOKEN = 'EAAB3JUNaWzgBAJirLACJvpCwrGBgtQbLyKjfHxbRGGYeut2eG09N6OpOrYRjnyEyZB8j1qx0KUX6rkghZAZBvWKky6yV1wVzzV8tqpNwW5yyNZAt7OlSVtZCXtU6OnL5qZA6xBCmOrZAPxU6qlLRINhn8DWZB4OEZCxQgf4RGFxaKihZB01unAqbbZB';
+let greeting = 'Xin chào quý khách';
 let persistentMenu = {
   products: {
     title: 'Xem sản phẩm'
@@ -46,15 +47,13 @@ app.get('/fbmsg', function (req, res) {
 // Admin Page
 app.get('/', function (req,res) {
   res.render('index', {
-    showProductButtonTitle: persistentMenu.products.title
+    showProductButtonTitle: persistentMenu.products.title,
+    websiteButtonTitle: persistentMenu.website.title,
+    websiteButtonUrl: persistentMenu.website.url,
+    customButtonTitle: persistentMenu.custom.title,
+    customButtonText: persistentMenu.custom.text,
+    greeting: greeting
   });
-  // res.sendFile(path.join(__dirname + '/index.html'));
-  // document.getElementById(showProductButtonTitle).value = persistentMenu.products.title;
-  // document.getElementById(websiteButtonTitle).value = persistentMenu.website.title;
-  // document.getElementById(websiteButtonUrl).value = persistentMenu.website.url;
-  // document.getElementById(customButtonTitle).value = persistentMenu.custom.title;
-  // document.getElementById(customButtonText).value = persistentMenu.custom.text;
-  //__dirname : It will resolve to your project folder.
 });
   
 // Facebook Messenger Receiver
@@ -67,17 +66,25 @@ app.post('/fbmsg', function (req, res) {
   res.status(200).json({});
 });
 
-exports.changeConfig = function (greeting, showProductButtonTitle, websiteButtonTitle, websiteButtonUrl, customButtonTitle, customButtonText) {
-  // let greeting = document.getElementById(greeting).value;
-  // let showProductButtonTitle = document.getElementById(showProductButtonTitle).value;
-  // let websiteButtonTitle = document.getElementById(websiteButtonTitle).value;
-  // let websiteButtonUrl = document.getElementById(websiteButtonUrl).value;
-  // let customButtonTitle = document.getElementById(customButtonTitle).value;
-  // let customButtonText = document.getElementById(customButtonText).value;
-  // persistentMenu.custom.text = customButtonText;
+app.post('/configure', function (req, res) {
+  persistentMenu.products.title = req.body.showProductButtonTitle;
+  persistentMenu.website.title = req.body.websiteButtonTitle;
+  persistentMenu.website.url = req.body.websiteButtonUrl;
+  persistentMenu.custom.title = req.body.customButtonTitle;
+  persistentMenu.custom.text = req.body.customButtonText;
+  greeting = req.body.greeting;
   fbmsgConfigure.greetingText(PAGE_ACCESS_TOKEN, greeting);
-  fbmsgConfigure.persistentMenu(PAGE_ACCESS_TOKEN, showProductButtonTitle, websiteButtonTitle, websiteButtonUrl, customButtonTitle);
-}
+  fbmsgConfigure.persistentMenu(PAGE_ACCESS_TOKEN, 
+                                persistentMenu.products.title, 
+                                persistentMenu.website.title, 
+                                persistentMenu.website.url, 
+                                persistentMenu.custom.title, 
+                                persistentMenu.custom.text);
+  setTimeout(function () {
+    res.redirect('/');
+  }, 2000);
+});
+
 // restService.post('/bizweb/orders/fulfilled', function (req, res) {
 //     var request = require('request');
 //     var constant = require('./lib/constant');
