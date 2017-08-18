@@ -45,6 +45,7 @@ exports.processInputMessage = function (messaging) {
 }
 
 function sendMessage (message) {
+	console.log(message);
 	let options = {
 		method: 'POST',
 		uri: "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=" + PAGE_ACCESS_TOKEN,
