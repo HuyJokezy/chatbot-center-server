@@ -3,8 +3,6 @@ const makeMessage = require('./makeMessage');
 let persistentMenu = require('../index').persistentMenu;
 let PAGE_ACCESS_TOKEN = require('../index').PAGE_ACCESS_TOKEN;
 let getStarted = require('../index').getStarted;
-// console.log(persistentMenu);
-// console.log(getStarted);
 
 exports.processInputMessage = function (messaging) {
 	const userId = messaging.sender.id;
