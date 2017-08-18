@@ -30,6 +30,7 @@ exports.processInputMessage = function (messaging) {
 				break;
 			case 'CUSTOM_TEXT':
 				let persistentMenu = require('../index').persistentMenu;
+				console.log(JSON.stringify(persistentMenu));
 				sendMessage(makeMessage.makeTextMessage(userId, persistentMenu.custom.text));
 				break;
 			case 'SHOW_PRODUCT':
