@@ -48,7 +48,7 @@ function sendMessage (message) {
 	console.log(message);
 	let options = {
 		method: 'POST',
-		uri: "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=" + PAGE_ACCESS_TOKEN,
+		uri: "https://graph.facebook.com/v2.6/me/?access_token=" + PAGE_ACCESS_TOKEN,
 		json: true,
 		body: message
 	};
@@ -57,8 +57,8 @@ function sendMessage (message) {
 			console.log('Error: Cannot send message');
 			console.log(error);
 		} else {
-			console.log(response);
 			console.log('Success: Sent a message');
+			console.log(body);
 		}
 	});
 }
