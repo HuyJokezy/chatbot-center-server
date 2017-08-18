@@ -50,7 +50,7 @@ app.get('/', function (req,res) {
     websiteButtonUrl: persistentMenu.website.url,
     customButtonTitle: persistentMenu.custom.title,
     customButtonText: persistentMenu.custom.text,
-    greeting: greeting
+    getStarted: getStarted
   });
 });
   
@@ -71,8 +71,8 @@ app.post('/configure', function (req, res) {
   persistentMenu.website.url = req.body.websiteButtonUrl;
   persistentMenu.custom.title = req.body.customButtonTitle;
   persistentMenu.custom.text = req.body.customButtonText;
-  greeting = req.body.greeting;
-  fbmsgConfigure.greetingText(PAGE_ACCESS_TOKEN, greeting);
+  getStarted = req.body.getStarted;
+  // fbmsgConfigure.greetingText(PAGE_ACCESS_TOKEN, greeting);
   fbmsgConfigure.persistentMenu(PAGE_ACCESS_TOKEN, 
                                 persistentMenu.products.title, 
                                 persistentMenu.website.title, 
