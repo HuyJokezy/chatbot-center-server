@@ -45,7 +45,9 @@ app.get('/fbmsg', function (req, res) {
 
 // Admin Page
 app.get('/', function (req,res) {
-  res.render('index');
+  res.render('index', {
+    showProductButtonTitle: persistentMenu.products.title
+  });
   // res.sendFile(path.join(__dirname + '/index.html'));
   // document.getElementById(showProductButtonTitle).value = persistentMenu.products.title;
   // document.getElementById(websiteButtonTitle).value = persistentMenu.website.title;
