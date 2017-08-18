@@ -2,7 +2,7 @@
 
 // Variable for testing
 exports.PAGE_ACCESS_TOKEN = 'EAAB3JUNaWzgBAJirLACJvpCwrGBgtQbLyKjfHxbRGGYeut2eG09N6OpOrYRjnyEyZB8j1qx0KUX6rkghZAZBvWKky6yV1wVzzV8tqpNwW5yyNZAt7OlSVtZCXtU6OnL5qZA6xBCmOrZAPxU6qlLRINhn8DWZB4OEZCxQgf4RGFxaKihZB01unAqbbZB';
-exports.greeting = 'Xin chào quý khách';
+exports.getStarted = 'Xin chào quý khách';
 exports.persistentMenu = {
   products: {
     title: 'Xem sản phẩm'

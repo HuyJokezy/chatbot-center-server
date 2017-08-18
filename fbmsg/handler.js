@@ -2,6 +2,7 @@ const request = require('request');
 const makeMessage = require('./makeMessage');
 let persistentMenu = require('../index').persistentMenu;
 let PAGE_ACCESS_TOKEN = require('../index').PAGE_ACCESS_TOKEN;
+let getStarted = require('../index').getStarted;
 console.log(persistentMenu);
 console.log(PAGE_ACCESS_TOKEN);
 
@@ -25,12 +26,15 @@ exports.processInputMessage = function (messaging) {
 		// Postback Webhook
 		let payload = messaging.postback.payload
 		switch (payload) {
-			// case 'CUSTOM_TEXT':
-			// 	sendMessage(makeMessage.makeTextMessage(userId, persistentMenu.custom.text));
-			// 	break;
-			// case 'SHOW_PRODUCT':
-			// 	sendMessage(makeMessage.makeTextMessage(userId, 'Some Products Here'));
-			// 	break;
+			case 'GET_STARTED_PAYLOAD':
+				sendMessage(makeMessage.makeTextMessage(userId, getStarted));
+				break;
+			case 'CUSTOM_TEXT':
+				sendMessage(makeMessage.makeTextMessage(userId, persistentMenu.custom.text));
+				break;
+			case 'SHOW_PRODUCT':
+				sendMessage(makeMessage.makeTextMessage(userId, 'Some Products Here'));
+				break;
 			default:
 		}
 	} else if (messaging.referral) {
