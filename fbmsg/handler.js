@@ -3,6 +3,7 @@ const makeMessage = require('./makeMessage');
 let persistentMenu = require('../index').persistentMenu;
 let PAGE_ACCESS_TOKEN = require('../index').PAGE_ACCESS_TOKEN;
 let getStarted = require('../index').getStarted;
+console.log('In handler:' + getStarted);
 
 exports.processInputMessage = function (messaging) {
 	const userId = messaging.sender.id;
@@ -25,7 +26,7 @@ exports.processInputMessage = function (messaging) {
 		let payload = messaging.postback.payload
 		switch (payload) {
 			case 'GET_STARTED_PAYLOAD':
-				console.log(getStarted);
+				// console.log(getStarted);
 				sendMessage(makeMessage.makeTextMessage(userId, getStarted));
 				break;
 			case 'CUSTOM_TEXT':
