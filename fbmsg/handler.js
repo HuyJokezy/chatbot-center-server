@@ -1,8 +1,6 @@
 const request = require('request');
 const makeMessage = require('./makeMessage');
-let persistentMenu = require('../index').persistentMenu;
 let PAGE_ACCESS_TOKEN = require('../index').PAGE_ACCESS_TOKEN;
-let getStarted = require('../index').getStarted;
 console.log('In handler:' + getStarted);
 
 exports.processInputMessage = function (messaging) {
@@ -27,9 +25,11 @@ exports.processInputMessage = function (messaging) {
 		switch (payload) {
 			case 'GET_STARTED_PAYLOAD':
 				// console.log(getStarted);
+				let getStarted = require('../index').getStarted;
 				sendMessage(makeMessage.makeTextMessage(userId, getStarted));
 				break;
 			case 'CUSTOM_TEXT':
+				let persistentMenu = require('../index').persistentMenu;
 				sendMessage(makeMessage.makeTextMessage(userId, persistentMenu.custom.text));
 				break;
 			case 'SHOW_PRODUCT':
