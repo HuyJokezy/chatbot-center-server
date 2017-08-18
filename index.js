@@ -16,7 +16,8 @@ exports.persistentMenu = {
     text: 'Cảm ơn bạn đã quan tâm'
   }
 };
-
+console.log(persistentMenu);
+console.log(getStarted);
 // Modules
 const express = require('express');
 const bodyParser = require('body-parser');
