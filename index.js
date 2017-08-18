@@ -58,6 +58,7 @@ app.get('/', function (req,res) {
   
 // Facebook Messenger Receiver
 app.post('/fbmsg', function (req, res) {
+  let entry = req.body.entry;
   for (let i = 0; i < entry.length; i++) {
     for (let j = 0; j < entry[i].messaging.length; j++) {
       fbmsgHandler.processInputMessage(entry[i].messaging[j]);
