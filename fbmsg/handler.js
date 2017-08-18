@@ -1,7 +1,6 @@
 const request = require('request');
 const makeMessage = require('./makeMessage');
 let PAGE_ACCESS_TOKEN = require('../index').PAGE_ACCESS_TOKEN;
-console.log('In handler:' + getStarted);
 
 exports.processInputMessage = function (messaging) {
 	const userId = messaging.sender.id;
