@@ -57,7 +57,7 @@ function sendMessage (message) {
 			console.log('Error: Cannot send message');
 			console.log(error);
 		} else {
-			console.log(body);
+			console.log(response);
 			console.log('Success: Sent a message');
 		}
 	});
