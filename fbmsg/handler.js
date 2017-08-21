@@ -11,6 +11,31 @@ exports.processInputMessage = function (messaging) {
 		let text, attachments, payload;
 		if (messaging.message.text) {
 			text = messaging.message.text;
+			switch (text) {
+				case 'dkt':
+					sendMessage({
+						"recipient":{
+					    "id": userId
+					  },
+					  "message": {
+					    "attachment": {
+					      "type":"template",
+					      "payload": {
+					        "template_type": "button",
+					        "text": "Web DKT",
+					        "buttons":[
+					          {
+					            "type": "web_url",
+					            "url": "https://dkt.com.vn",
+					            "title": "Visit",
+					            "webview_height_ratio": "compact"
+					          }
+					        ]
+					      }
+					    }
+					  }
+					});
+			}  
 		}
 		if (messaging.message.attachments) {
 			attachments = messaging.message.attachments;
