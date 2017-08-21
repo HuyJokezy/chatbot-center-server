@@ -40,7 +40,7 @@ exports.processInputMessage = function (messaging) {
 		if (messaging.message.attachments) {
 			attachments = messaging.message.attachments;
 		}
-		if (messaging.message[quick_reply]) {
+		if (messaging.message.quick_reply) {
 			payload = messaging.message[quick_reply].payload;
 		}
 	} else if (messaging.postback) {
