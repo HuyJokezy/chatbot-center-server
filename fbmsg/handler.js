@@ -26,7 +26,7 @@ exports.processInputMessage = function (messaging) {
 					        "buttons":[
 					          {
 					            "type": "web_url",
-					            "url": "https://dkt.com.vn",
+					            "url": "https://chatbot-center-server.herokuapp.com/",
 					            "title": "Visit",
 					            "webview_height_ratio": "compact"
 					          }
