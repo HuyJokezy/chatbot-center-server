@@ -35,6 +35,9 @@ exports.processInputMessage = function (messaging) {
 					    }
 					  }
 					});
+					break;
+					default:
+						sendMessage(makeMessage.makeTextMessage(userId, JSON.stringify(messaging.message.nlp)));
 			}  
 		}
 		if (messaging.message.attachments) {
