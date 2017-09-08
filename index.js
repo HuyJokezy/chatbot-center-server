@@ -62,7 +62,7 @@ app.get('/', function (req,res) {
 
 app.get('/test', function (req, res) {
   res.header('X-Frame-Options', 'ALLOW-FROM https://www.messenger.com/')
-  res.send('hello');
+  res.render('test', {});
 });
 
 // Facebook Messenger Receiver
