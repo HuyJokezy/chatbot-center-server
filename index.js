@@ -48,6 +48,7 @@ app.get('/fbmsg', function (req, res) {
 
 // Admin Page
 app.get('/', function (req,res) {
+  res.header('X-Frame-Options', 'ALLOW-FROM https://www.messenger.com/');
   res.render('index', {
     showProductButtonTitle: persistentMenu.products.title,
     websiteButtonTitle: persistentMenu.website.title,
