@@ -49,7 +49,7 @@ app.get('/fbmsg', function (req, res) {
 // Admin Page
 app.get('/', function (req,res) {
   res.header('X-Frame-Options', 'ALLOW-FROM https://www.messenger.com/');
-  next(
+  // next(
     res.render('index', {
       showProductButtonTitle: persistentMenu.products.title,
       websiteButtonTitle: persistentMenu.website.title,
@@ -58,7 +58,7 @@ app.get('/', function (req,res) {
       customButtonText: persistentMenu.custom.text,
       getStarted: getStarted
     });
-  );
+  // );
 });
   
 // Facebook Messenger Receiver
