@@ -86,8 +86,8 @@ exports.persistentMenu = function (PAGE_ACCESS_TOKEN, showProductButtonTitle, we
 						{
 							"title": websiteButtonTitle,
 							"type": "web_url",
-							"url": websiteButtonUrl
-							// "webview_height_ratio": "compact"
+							"url": websiteButtonUrl,
+							"webview_height_ratio": "tall"
 						},
 						{
 							"title": customButtonTitle,
