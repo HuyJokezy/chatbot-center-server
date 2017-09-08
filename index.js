@@ -49,14 +49,16 @@ app.get('/fbmsg', function (req, res) {
 // Admin Page
 app.get('/', function (req,res) {
   res.header('X-Frame-Options', 'ALLOW-FROM https://www.messenger.com/');
-  res.render('index', {
-    showProductButtonTitle: persistentMenu.products.title,
-    websiteButtonTitle: persistentMenu.website.title,
-    websiteButtonUrl: persistentMenu.website.url,
-    customButtonTitle: persistentMenu.custom.title,
-    customButtonText: persistentMenu.custom.text,
-    getStarted: getStarted
-  });
+  next(
+    res.render('index', {
+      showProductButtonTitle: persistentMenu.products.title,
+      websiteButtonTitle: persistentMenu.website.title,
+      websiteButtonUrl: persistentMenu.website.url,
+      customButtonTitle: persistentMenu.custom.title,
+      customButtonText: persistentMenu.custom.text,
+      getStarted: getStarted
+    });
+  );
 });
   
 // Facebook Messenger Receiver
