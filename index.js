@@ -9,7 +9,7 @@ let persistentMenu = {
   },
   website: {
     title: 'Trang web',
-    url: 'https://www.google.com.vn'
+    url: 'https://chatbot-center-server.herokuapp.com/'
   },
   custom: {
     title: 'Tìm hiểu thêm',
