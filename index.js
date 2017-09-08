@@ -60,8 +60,10 @@ app.get('/', function (req,res) {
   // );
 });
 
-app.get('/test', function (req, res) {
+app.get('/test', function (req, res, next) {
   res.setHeader('X-Frame-Options', 'ALLOW-FROM https://www.messenger.com/');
+  next();
+}, function (req, res) {
   res.render('test', {});
 });
 
