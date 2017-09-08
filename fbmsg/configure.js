@@ -100,7 +100,7 @@ exports.persistentMenu = function (PAGE_ACCESS_TOKEN, showProductButtonTitle, we
 			]
 		}
 	};
-	console.log(options.body);
+	console.log(JSON.stringify(options.body.persistent_menu);
 	request(options, function (error, response, body) {
 		if (error) {
 			console.log('Error: Cannot set Persistent Menu');
