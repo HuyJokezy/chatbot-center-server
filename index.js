@@ -67,6 +67,10 @@ app.get('/test', function (req, res, next) {
   res.render('test', {});
 });
 
+app.get('/node', function (req, res) {
+ res.send('Hello');
+});
+
 // Facebook Messenger Receiver
 app.post('/fbmsg', function (req, res) {
   let entry = req.body.entry;
