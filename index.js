@@ -32,7 +32,7 @@ var ejs = require('ejs');
 var fs = require('fs');
 
 app.use(bodyParser.urlencoded({
-    extended: true
+  extended: true
 }));
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
@@ -49,14 +49,14 @@ app.get('/fbmsg', function (req, res) {
 // Admin Page
 app.get('/', function (req,res) {
   // next(
-    res.render('index', {
-      showProductButtonTitle: persistentMenu.products.title,
-      websiteButtonTitle: persistentMenu.website.title,
-      websiteButtonUrl: persistentMenu.website.url,
-      customButtonTitle: persistentMenu.custom.title,
-      customButtonText: persistentMenu.custom.text,
-      getStarted: getStarted
-    });
+  res.render('index', {
+    showProductButtonTitle: persistentMenu.products.title,
+    websiteButtonTitle: persistentMenu.website.title,
+    websiteButtonUrl: persistentMenu.website.url,
+    customButtonTitle: persistentMenu.custom.title,
+    customButtonText: persistentMenu.custom.text,
+    getStarted: getStarted
+  });
   // );
 });
 
@@ -75,12 +75,19 @@ app.get('/node', function (req, res) {
 app.post('/fbmsg', function (req, res) {
   let entry = req.body.entry;
   for (let i = 0; i < entry.length; i++) {
+    if (entry.standby) {
+      for (let j = 0; j < entry[i].standby.length; j++) {
+        console.log(entry[i].standby[j])
+      // fbmsgHandler.processInputMessage(entry[i].messaging[j]);
+    }
+  } else {
     for (let j = 0; j < entry[i].messaging.length; j++) {
       console.log(entry[i].messaging[j])
       // fbmsgHandler.processInputMessage(entry[i].messaging[j]);
     }
   }
-  res.status(200).json({});
+}
+res.status(200).json({});
 });
 
 app.post('/configure', function (req, res) {
@@ -128,5 +135,5 @@ app.post('/configure', function (req, res) {
 // });
 
 app.listen((process.env.PORT || 8000), function () {
-    console.log("Server up and listening");
+  console.log("Server up and listening");
 });
