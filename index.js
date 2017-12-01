@@ -1,7 +1,7 @@
 'use strict';
 
 // Variable for testing
-const PAGE_ACCESS_TOKEN = 'EAAB3JUNaWzgBAJirLACJvpCwrGBgtQbLyKjfHxbRGGYeut2eG09N6OpOrYRjnyEyZB8j1qx0KUX6rkghZAZBvWKky6yV1wVzzV8tqpNwW5yyNZAt7OlSVtZCXtU6OnL5qZA6xBCmOrZAPxU6qlLRINhn8DWZB4OEZCxQgf4RGFxaKihZB01unAqbbZB';
+const PAGE_ACCESS_TOKEN = 'EAAB3JUNaWzgBABaCKSZB6AOvtLEOzZCk7soD8QOMMnzWYeQ9av9N9U9b2lrzn7yMpndJDijT3ZChgMAkSvJoN44pFlUSoIarBJPl02OzxYgIhbggOZAGbAqFv3IuZBcUDNWbqZCjBN3NONL66ZCgoyZBdzMd80yA8OC6gKCUHX1MlExMUhrzv34f';
 var getStarted = 'Xin chào quý khách';
 let persistentMenu = {
   products: {
