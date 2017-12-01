@@ -76,7 +76,8 @@ app.post('/fbmsg', function (req, res) {
   let entry = req.body.entry;
   for (let i = 0; i < entry.length; i++) {
     for (let j = 0; j < entry[i].messaging.length; j++) {
-      fbmsgHandler.processInputMessage(entry[i].messaging[j]);
+      console.log(entry[i].messaging[j])
+      // fbmsgHandler.processInputMessage(entry[i].messaging[j]);
     }
   }
   res.status(200).json({});
@@ -92,11 +93,11 @@ app.post('/configure', function (req, res) {
   exports.getStarted = getStarted;
   console.log(getStarted);
   // fbmsgConfigure.greetingText(PAGE_ACCESS_TOKEN, greeting);
-  fbmsgConfigure.persistentMenu(PAGE_ACCESS_TOKEN, 
-                                persistentMenu.products.title, 
-                                persistentMenu.website.title, 
-                                persistentMenu.website.url, 
-                                persistentMenu.custom.title, 
+  fbmsgConfigure.persistentMenu(PAGE_ACCESS_TOKEN,
+                                persistentMenu.products.title,
+                                persistentMenu.website.title,
+                                persistentMenu.website.url,
+                                persistentMenu.custom.title,
                                 persistentMenu.custom.text);
   setTimeout(function () {
     res.redirect('/');
@@ -119,13 +120,13 @@ app.post('/configure', function (req, res) {
 //                 }
 //             },
 //             json: true
-//         }, 
+//         },
 //         function (error, response, body) {
 //             res.json({});
 //         }
 //     );
 // });
-    
+
 app.listen((process.env.PORT || 8000), function () {
     console.log("Server up and listening");
 });
