@@ -75,7 +75,7 @@ app.get('/node', function (req, res) {
 app.post('/fbmsg', function (req, res) {
   let entry = req.body.entry;
   for (let i = 0; i < entry.length; i++) {
-    if (entry.standby) {
+    if (entry[i].standby) {
       for (let j = 0; j < entry[i].standby.length; j++) {
         console.log(entry[i].standby[j])
       // fbmsgHandler.processInputMessage(entry[i].messaging[j]);
