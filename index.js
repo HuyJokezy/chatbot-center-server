@@ -77,12 +77,12 @@ app.post('/fbmsg', function (req, res) {
   for (let i = 0; i < entry.length; i++) {
     if (entry[i].standby) {
       for (let j = 0; j < entry[i].standby.length; j++) {
-        console.log(entry[i].standby[j])
+        console.log('Standby\n', entry[i].standby[j])
       // fbmsgHandler.processInputMessage(entry[i].messaging[j]);
     }
   } else {
     for (let j = 0; j < entry[i].messaging.length; j++) {
-      console.log(entry[i].messaging[j])
+      console.log('Messaging\n', entry[i].messaging[j])
       // fbmsgHandler.processInputMessage(entry[i].messaging[j]);
     }
   }
