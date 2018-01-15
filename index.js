@@ -82,7 +82,7 @@ app.post('/fbmsg', function (req, res) {
     }
   } else {
     for (let j = 0; j < entry[i].messaging.length; j++) {
-      console.log('Messaging\n', entry[i].messaging[j])
+      console.log('Messaging\n', JSON.stringify(entry[i].messaging[j].message))
       // fbmsgHandler.processInputMessage(entry[i].messaging[j]);
     }
   }
